@@ -1,0 +1,23 @@
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": { "name": "tet-images-converter" },
+  "spec": {
+    "replicas": 1,
+    "selector": { "matchLabels": { "app": "tet-images-converter" } },
+    "template": {
+      "metadata": { "labels": { "app": "tet-images-converter" } },
+      "spec": {
+        "terminationGracePeriodSeconds": 30,
+        "containers": [
+          {
+            "name": "tet-images-converter",
+            "image": "registry.digitalocean.com/neutrino/tet-images-converter",
+            "imagePullPolicy": "Always"
+          }
+        ],
+        "nodeSelector": { "doks.digitalocean.com/node-pool": "images-converter" }
+      }
+    }
+  }
+}

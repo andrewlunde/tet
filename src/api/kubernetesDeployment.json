@@ -1,0 +1,22 @@
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": { "name": "tet-api" },
+  "spec": {
+    "replicas": 3,
+    "selector": { "matchLabels": { "app": "tet-api" } },
+    "template": {
+      "metadata": { "labels": { "app": "tet-api" } },
+      "spec": {
+        "terminationGracePeriodSeconds": 30,
+        "containers": [
+          {
+            "name": "tet-api",
+            "image": "registry.digitalocean.com/neutrino/tet-api",
+            "imagePullPolicy": "Always"
+          }
+        ]
+      }
+    }
+  }
+}

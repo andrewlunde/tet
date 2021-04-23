@@ -1,0 +1,22 @@
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": { "name": "tet-frontend" },
+  "spec": {
+    "replicas": 3,
+    "selector": { "matchLabels": { "app": "tet-frontend" } },
+    "template": {
+      "metadata": { "labels": { "app": "tet-frontend" } },
+      "spec": {
+        "terminationGracePeriodSeconds": 30,
+        "containers": [
+          {
+            "name": "tet-frontend",
+            "image": "registry.digitalocean.com/neutrino/tet-frontend",
+            "imagePullPolicy": "Always"
+          }
+        ]
+      }
+    }
+  }
+}
