@@ -15,7 +15,38 @@ export const BuyModalSeller = styled.div`
   grid-template-columns: 45px repeat(3, 1fr);
   grid-gap: 10px;
 `
-export const BuyModalVideo = styled.div``
+export const BuyModalVideo = styled.div`
+  > h1 {
+    margin: 0 0 10px 0;
+    line-height: 36px;
+  }
+`
+
+export const BuyModalConsumedGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  margin-top: 20px;
+`
+
+export const BuyModalConsumedTitle = styled.div`
+  font-size: 16px;
+  line-height: 16px;
+  color: #999999;
+`
+
+export const BuyModalConsumedValue = styled.div`
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 40px;
+  color: #ffffff;
+
+  > img {
+    height: 39px;
+    vertical-align: bottom;
+    margin-left: 10px;
+  }
+`
 
 export const BuyModalSellerImg = styled.img`
   width: 45px;

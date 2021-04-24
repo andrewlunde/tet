@@ -8,17 +8,17 @@ import 'video.js/dist/video-js.css'
 import { Video } from 'shared/video/Video'
 // prettier-ignore
 import { ModalCard, ModalCardContent, ModalClose, ModalMask, ModalStyled, textColor, ModalCardText, ModalCardH1, ModalA } from 'styles'
-import { BuyModalVideo } from './BuyModal.style'
+import { BuyModalConsumedGrid, BuyModalConsumedTitle, BuyModalConsumedValue, BuyModalVideo } from './BuyModal.style'
 
 type BuyModalViewProps = {
   loading: boolean
   showing: boolean
   video?: Video
   hideCallback: () => void
-  chargeCallback: (videoId: ObjectId) => void
+  ticker: number
 }
 
-export const BuyModalView = ({ loading, showing, video, hideCallback, chargeCallback }: BuyModalViewProps) => {
+export const BuyModalView = ({ loading, showing, video, hideCallback, ticker }: BuyModalViewProps) => {
   const playerOptions = {
     src: video?.videoUrl || '',
     controls: true,
@@ -50,6 +50,21 @@ export const BuyModalView = ({ loading, showing, video, hideCallback, chargeCall
                   onPause={(e, _, second) => console.log('Pause!')}
                   onEnded={(e, _) => console.log('Ended!')}
                 />
+                <BuyModalConsumedGrid>
+                  <div>
+                    <BuyModalConsumedTitle>Consumed</BuyModalConsumedTitle>
+                    <BuyModalConsumedValue>{`${Math.floor(ticker / 3600)}h : ${Math.floor(ticker / 60) % 60}m : ${
+                      ticker % 60
+                    }s`}</BuyModalConsumedValue>
+                  </div>
+                  <div>
+                    <BuyModalConsumedTitle>Paid to creator</BuyModalConsumedTitle>
+                    <BuyModalConsumedValue>
+                      {Math.floor(ticker / 60) % 60} TFUEL
+                      <img src="/icons/tfuel.svg" />
+                    </BuyModalConsumedValue>
+                  </div>
+                </BuyModalConsumedGrid>
               </BuyModalVideo>
             </ModalCardContent>
           </ModalCard>
@@ -63,7 +78,7 @@ BuyModalView.propTypes = {
   loading: PropTypes.bool,
   showing: PropTypes.bool.isRequired,
   hideCallback: PropTypes.func.isRequired,
-  chargeCallback: PropTypes.func.isRequired,
+  ticker: PropTypes.number,
 }
 
 BuyModalView.defaultProps = {
