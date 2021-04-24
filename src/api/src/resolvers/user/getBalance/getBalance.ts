@@ -17,11 +17,11 @@ export const getBalance = async (ctx: Context, next: Next): Promise<void> => {
 
   console.log(
     "The new account balance is: " +
-      authUser.mnemonic +
+      authUser.balance +
       " bar."
   );
 
-  const response: GetBalanceOutputs = { balance: authUser.mnemonic as unknown as number }
+  const response: GetBalanceOutputs = { balance: authUser.balance }
 
   ctx.status = 200
   ctx.body = response

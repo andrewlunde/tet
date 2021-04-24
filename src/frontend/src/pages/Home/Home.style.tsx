@@ -16,7 +16,7 @@ export const HomeHero = styled.div`
 export const HomeVideos = styled.div`
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 30px;
   width: 100%;
 `
@@ -53,15 +53,7 @@ export const HomeVideoFooter = styled.div`
     text-align: right;
   }
 
-  > div:nth-child(3) {
-    font-size: 12px;
-    color: ${subTextColor};
-    text-align: left;
-  }
-
-  > div:nth-child(4) {
-    font-size: 12px;
-    color: ${subTextColor};
-    text-align: right;
+  > img {
+    margin-top: 3px;
   }
 `

@@ -30,13 +30,13 @@ export const HeaderLoggedOut = styled.div`
 export const HeaderLoggedIn = styled.div`
   font-size: 16px;
   font-weight: bold;
-  line-height: 42px;
+  line-height: 60px;
   display: grid;
-  grid-template-columns: auto auto 120px;
+  grid-template-columns: 80px 150px 100px;
   grid-gap: 20px;
 
   > button {
-    margin-top: 3px;
+    margin-top: 11px;
   }
 `
 

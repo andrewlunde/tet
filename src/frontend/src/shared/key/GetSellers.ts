@@ -4,13 +4,13 @@ import { ObjectId } from 'mongodb'
 
 import { KeyUser } from './KeyUser'
 
-export class GetSellersInputs {
+export class ChargeInputs {
   @Expose()
   @IsMongoId()
   videoId!: ObjectId
 }
 
-export class GetSellersOutputs {
+export class ChargeOutputs {
   @Expose()
   @IsArray()
   keyUsers!: KeyUser[]

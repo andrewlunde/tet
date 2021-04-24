@@ -1,20 +1,20 @@
 import { RESET, RESTORE } from 'app/App.actions'
-import { BUY_KEY_COMMIT, GET_SELLERS_COMMIT, GET_SELLERS_REQUEST, HIDE_SELLERS, SHOW_SELLERS } from 'app/App.components/BuyModal/BuyModal.actions'
-import { ObjectId } from 'mongodb'
+import { BUY_KEY_COMMIT, CHARGE_COMMIT, CHARGE_REQUEST, HIDE_VIDEO, SHOW_VIDEO } from 'app/App.components/BuyModal/BuyModal.actions'
 import { Key } from 'shared/key/Key'
 import { KeyUser } from 'shared/key/KeyUser'
+import { Video } from 'shared/video/Video'
 
 export interface BuyModalState {
   showing: boolean
-  videoId?: ObjectId
-  purchasedKey?: Key,
-  transactionHash?: string,
+  video?: Video
+  purchasedKey?: Key
+  transactionHash?: string
   sellers: KeyUser[]
 }
 
 const buyModalDefaultState: BuyModalState = {
   showing: false,
-  videoId: undefined,
+  video: undefined,
   purchasedKey: undefined,
   transactionHash: undefined,
   sellers: []
@@ -28,23 +28,23 @@ export function buyModal(state = buyModalDefaultState, action: any): BuyModalSta
     case RESTORE: {
       return buyModalDefaultState
     }
-    case SHOW_SELLERS: {
+    case SHOW_VIDEO: {
       return {
         ...state,
-        videoId: action.payload.videoId,
+        video: action.payload.video,
         showing: true
       }
     }
-    case HIDE_SELLERS: {
+    case HIDE_VIDEO: {
       return buyModalDefaultState
     }
-    case GET_SELLERS_REQUEST: {
+    case CHARGE_REQUEST: {
       return {
         ...state,
         sellers: []
       }
     }
-    case GET_SELLERS_COMMIT: {
+    case CHARGE_COMMIT: {
       return {
         ...state,
         sellers: action.payload.keyUsers

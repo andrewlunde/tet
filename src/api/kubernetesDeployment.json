@@ -12,7 +12,7 @@
         "containers": [
           {
             "name": "tet-api",
-            "image": "registry.digitalocean.com/neutrino/tet-api",
+            "image": "registry.digitalocean.com/rtx/tet-api",
             "imagePullPolicy": "Always"
           }
         ]

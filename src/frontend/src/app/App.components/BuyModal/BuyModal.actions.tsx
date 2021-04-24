@@ -1,44 +1,45 @@
 import { ObjectId } from 'mongodb'
 import { State } from 'reducers'
 import { BuyKeyInputs } from 'shared/key/BuyKey'
-import { GetSellersInputs } from 'shared/key/GetSellers'
+import { ChargeInputs } from 'shared/video/Charge'
+import { Video } from 'shared/video/Video'
 import { getBalance } from '../Header/Header.actions'
 
-export const SHOW_SELLERS = 'SHOW_SELLERS'
-export const HIDE_SELLERS = 'HIDE_SELLERS'
+export const SHOW_VIDEO = 'SHOW_VIDEO'
+export const HIDE_VIDEO = 'HIDE_VIDEO'
 
-export const showSellers = (videoId: ObjectId) => (dispatch: any) => {
+export const showVideo = (video: Video) => (dispatch: any) => {
   dispatch({
-    type: SHOW_SELLERS,
-    payload: { videoId },
+    type: SHOW_VIDEO,
+    payload: { video },
   })
 }
 
-export const hideSellers = () => (dispatch: any) => {
+export const hideVideo = () => (dispatch: any) => {
   dispatch({
-    type: HIDE_SELLERS,
+    type: HIDE_VIDEO,
   })
 }
 
-export const GET_SELLERS_REQUEST = 'GET_SELLERS_REQUEST'
-export const GET_SELLERS_COMMIT = 'GET_SELLERS_COMMIT'
-export const GET_SELLERS_ROLLBACK = 'GET_SELLERS_ROLLBACK'
+export const CHARGE_REQUEST = 'CHARGE_REQUEST'
+export const CHARGE_COMMIT = 'CHARGE_COMMIT'
+export const CHARGE_ROLLBACK = 'CHARGE_ROLLBACK'
 
-export const getSellers = ({ videoId }: GetSellersInputs) => (dispatch: any, getState: any) => {
+export const charge = ({ videoId }: ChargeInputs) => (dispatch: any, getState: any) => {
   const state: State = getState()
   dispatch({
-    type: GET_SELLERS_REQUEST,
+    type: CHARGE_REQUEST,
     payload: { videoId },
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/key/get-sellers`,
+          url: `${process.env.REACT_APP_BACKEND_URL}/video/charge`,
           method: 'POST',
           headers: { Authorization: `Bearer ${state.auth.jwt}` },
           json: { videoId },
         },
-        commit: { type: GET_SELLERS_COMMIT, meta: { videoId } },
-        rollback: { type: GET_SELLERS_ROLLBACK },
+        commit: { type: CHARGE_COMMIT, meta: { videoId } },
+        rollback: { type: CHARGE_ROLLBACK },
       },
     },
   })

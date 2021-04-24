@@ -78,8 +78,8 @@ export const signUp = async (ctx: Context, next: Next): Promise<void> => {
   console.log(wallet)
   console.log(wallet._mnemonic().phrase)
 
-  const account = await provider.getAccount(wallet.address);
-  console.log(account)
+  // const account = await provider.getAccount(wallet.address);
+  // FAILS BECAUSE OF ERROR IN ERROR IN @thetalabs/theta-js : "Fetch is not defined"
 
   const hashedPassword = await hash(password, 12)
   const user: User = await UserModel.create({
@@ -87,6 +87,7 @@ export const signUp = async (ctx: Context, next: Next): Promise<void> => {
     username,
     hashedPassword,
     mnemonic: wallet._mnemonic().phrase,
+    balance: 100,
     profilePicture: `https://f000.backblazeb2.com/file/pics-provider/profiles/${Math.floor(Math.random() * 2376)}.jpg`,
   } as User)
   const publicUser: PublicUser = toPublicUser(user)

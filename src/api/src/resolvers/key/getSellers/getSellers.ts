@@ -3,19 +3,19 @@ import { validateOrReject } from 'class-validator'
 import { Context, Next } from 'koa'
 
 import { firstError } from '../../../helpers/firstError'
-import { GetSellersInputs, GetSellersOutputs } from '../../../shared/key/GetSellers'
+import { ChargeInputs, ChargeOutputs } from '../../../shared/key/Charge'
 import { Key, KeyModel } from '../../../shared/key/Key'
 import { KeyUser } from '../../../shared/key/KeyUser'
 import { PublicUser } from '../../../shared/user/PublicUser'
 import { UserModel } from '../../../shared/user/User'
 import { PUBLIC_USER_MONGO_SELECTOR } from '../../page/getPublicUser/getPublicUser'
 
-export const getSellers = async (ctx: Context, next: Next): Promise<void> => {
-  const getSellersArgs = plainToClass(GetSellersInputs, ctx.request.body, {
+export const Charge = async (ctx: Context, next: Next): Promise<void> => {
+  const ChargeArgs = plainToClass(ChargeInputs, ctx.request.body, {
     excludeExtraneousValues: true,
   })
-  await validateOrReject(getSellersArgs, { forbidUnknownValues: true }).catch(firstError)
-  const { videoId } = getSellersArgs
+  await validateOrReject(ChargeArgs, { forbidUnknownValues: true }).catch(firstError)
+  const { videoId } = ChargeArgs
 
   const keys: Key[] = await KeyModel.find({ videoId, buyerId: { $exists: false } }).sort({ price: 1 }).lean()
 
@@ -31,7 +31,7 @@ export const getSellers = async (ctx: Context, next: Next): Promise<void> => {
     }
   })
   
-  const reponse: GetSellersOutputs = { keyUsers }
+  const reponse: ChargeOutputs = { keyUsers }
 
   ctx.status = 200
   ctx.body = reponse

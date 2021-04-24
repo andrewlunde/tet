@@ -15,6 +15,7 @@ export const BuyModalSeller = styled.div`
   grid-template-columns: 45px repeat(3, 1fr);
   grid-gap: 10px;
 `
+export const BuyModalVideo = styled.div``
 
 export const BuyModalSellerImg = styled.img`
   width: 45px;

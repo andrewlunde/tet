@@ -1,10 +1,11 @@
-import { showSellers } from 'app/App.components/BuyModal/BuyModal.actions'
+import { showVideo } from 'app/App.components/BuyModal/BuyModal.actions'
 import { ObjectId } from 'mongodb'
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { State } from 'reducers'
+import { Video } from 'shared/video/Video'
 
 import { getVideos } from './Home.actions'
 import { HomeView } from './Home.view'
@@ -18,9 +19,9 @@ export const Home = () => {
     dispatch(getVideos())
   }, [dispatch])
 
-  const showSellersCallback = (videoId: ObjectId) => {
-    dispatch(showSellers(videoId))
+  const showVideoCallback = (video: Video) => {
+    dispatch(showVideo(video))
   }
 
-  return <HomeView loading={loading} videos={videos} showSellersCallback={showSellersCallback} />
+  return <HomeView loading={loading} videos={videos} showVideoCallback={showVideoCallback} />
 }

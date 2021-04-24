@@ -1,8 +1,7 @@
 import { Expose } from 'class-transformer'
-import { IsArray, IsMongoId } from 'class-validator'
+import { IsMongoId } from 'class-validator'
 import { ObjectId } from 'mongodb'
 
-import { KeyUser } from './KeyUser'
 
 export class ChargeInputs {
   @Expose()
@@ -11,7 +10,4 @@ export class ChargeInputs {
 }
 
 export class ChargeOutputs {
-  @Expose()
-  @IsArray()
-  keyUsers!: KeyUser[]
 }

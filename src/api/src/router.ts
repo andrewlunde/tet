@@ -9,7 +9,7 @@ import { newComment } from './resolvers/comment/newComment/newComment'
 import { createVideos } from './resolvers/video/createVideos/createVideos'
 import { getVideos } from './resolvers/video/getVideos/getVideos'
 import { buyKey } from './resolvers/key/buyKey/buyKey'
-import { getSellers } from './resolvers/key/getSellers/getSellers'
+import { charge } from './resolvers/video/charge/charge'
 import { newKey } from './resolvers/key/newKey/newKey'
 import { getPublicUser } from './resolvers/page/getPublicUser/getPublicUser'
 import { sendReport } from './resolvers/report/sendReport/sendReport'
@@ -65,8 +65,8 @@ router.get('/upload/get-token', getToken)
 
 router.post('/video/get-videos', getVideos)
 router.get('/video/create-videos', createVideos)
+router.post('/video/charge', charge)
 
-router.post('/key/get-sellers', getSellers)
 router.post('/key/buy-key', buyKey)
 router.post('/key/new-key', newKey)
 

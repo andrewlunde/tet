@@ -12,7 +12,7 @@
         "containers": [
           {
             "name": "tet-frontend",
-            "image": "registry.digitalocean.com/neutrino/tet-frontend",
+            "image": "registry.digitalocean.com/rtx/tet-frontend",
             "imagePullPolicy": "Always"
           }
         ]

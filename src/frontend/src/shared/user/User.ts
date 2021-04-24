@@ -20,11 +20,10 @@ export class User {
 
   @Property({ required: true, unique: true, index: true })
   @Length(10, 100)
-  accountId!: string
+  mnemonic!: string
 
   @Property({ required: true, unique: true, index: true })
-  @Length(10, 100)
-  privateKey!: string
+  balance!: number
 
   @Property({ nullable: true, optional: true })
   @IsOptional()
@@ -38,8 +37,8 @@ export class User {
   @IsOptional()
   @Length(8, 100)
   @IsUrl()
-  @Matches(/^https:\/\/b2.tet.io\/file\/[a-zA-Z0-9_.\/-]*/, {
-    message: 'Image URL must be from tet.io',
+  @Matches(/^https:\/\/b2.tet.university\/file\/[a-zA-Z0-9_.\/-]*/, {
+    message: 'Image URL must be from tet.university',
   })
   profilePicture?: string
 

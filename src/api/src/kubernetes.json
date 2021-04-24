@@ -12,7 +12,7 @@
         "containers": [
           {
             "name": "tet-images-converter",
-            "image": "registry.digitalocean.com/neutrino/tet-images-converter",
+            "image": "registry.digitalocean.com/rtx/tet-images-converter",
             "imagePullPolicy": "Always"
           }
         ],

@@ -9,10 +9,10 @@ import { HomeVideo, HomeVideoFooter, HomeVideoImage, HomeVideos, HomeHero, HomeS
 type HomeViewProps = {
   loading: boolean
   videos: Video[]
-  showSellersCallback: (videoId: ObjectId) => void
+  showVideoCallback: (video: Video) => void
 }
 
-export const HomeView = ({ loading, videos = [], showSellersCallback }: HomeViewProps) => {
+export const HomeView = ({ loading, videos = [], showVideoCallback }: HomeViewProps) => {
   console.log(videos)
 
   return (
@@ -24,13 +24,12 @@ export const HomeView = ({ loading, videos = [], showSellersCallback }: HomeView
         {videos && videos.length > 0 ? (
           <>
             {videos.map((video) => (
-              <HomeVideo key={(video._id as any) as string} onClick={() => showSellersCallback(video._id)}>
+              <HomeVideo key={(video._id as any) as string} onClick={() => showVideoCallback(video)}>
                 <HomeVideoImage alt={video.title} src={video.imageUrl} />
                 <HomeVideoFooter>
                   <div>{video.title}</div>
                   <div>{video.creator}</div>
-                  <div>{video.note}</div>
-                  <div>{`(${video.noteCount})`}</div>
+                  <img src="/images/note.svg" />
                 </HomeVideoFooter>
               </HomeVideo>
             ))}
@@ -46,7 +45,7 @@ export const HomeView = ({ loading, videos = [], showSellersCallback }: HomeView
 HomeView.propTypes = {
   loading: PropTypes.bool,
   videos: PropTypes.array.isRequired,
-  showSellersCallback: PropTypes.func.isRequired,
+  showVideoCallback: PropTypes.func.isRequired,
 }
 
 HomeView.defaultProps = {

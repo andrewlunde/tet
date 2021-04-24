@@ -48,13 +48,11 @@ function loggedInHeader(dispatch: any, user?: PublicUser, balance?: number | nul
       <HeaderLoggedInName>{`${user?.username}`}</HeaderLoggedInName>
       <HeaderLoggedInBalance>
         <div style={{ display: 'inline-block' }}>
-          {balance ? `Wallet: ${balance.toLocaleString()} HBAR` : 'Loading balance...'}
-        </div>
-        <div style={{ color: backgroundTextColor, display: 'inline-block', marginLeft: '10px' }}>
-          {balance ? `(\$${(balance * 0.1).toFixed(2)})` : ''}
+          {balance ? `Balance: ${balance.toLocaleString()} TFUEL` : 'Loading balance...'}
         </div>
       </HeaderLoggedInBalance>
       <Button
+        color="transparent"
         text="Logout"
         icon="logout"
         onClick={() => {
