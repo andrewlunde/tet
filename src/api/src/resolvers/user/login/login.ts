@@ -5,6 +5,7 @@ import { Context, Next } from 'koa'
 import { firstError } from '../../../helpers/firstError'
 import { toPublicUser } from '../../../helpers/toPublicUser'
 import { ResponseError } from '../../../shared/mongo/ResponseError'
+import { QuotaType } from '../../../shared/quota/QuotaType'
 import { Jwt } from '../../../shared/user/Jwt'
 import { LoginInputs, LoginOutputs } from '../../../shared/user/Login'
 import { PublicUser } from '../../../shared/user/PublicUser'
@@ -12,17 +13,15 @@ import { User, UserModel } from '../../../shared/user/User'
 import { rateLimit } from '../../quota/rateLimit/rateLimit'
 import { getSignedJwt } from '../helpers/getSignedJwt'
 import { matchPassword } from '../helpers/matchPassword'
-import { verifyRecaptchaToken } from '../helpers/verifyRecaptchaToken'
-import { QuotaType } from '../../../shared/quota/QuotaType'
 
 export const login = async (ctx: Context, next: Next): Promise<void> => {
   const loginArgs = plainToClass(LoginInputs, ctx.request.body, { excludeExtraneousValues: true })
   await validateOrReject(loginArgs, { forbidUnknownValues: true }).catch(firstError)
-  let { usernameOrEmail, password, recaptchaToken } = loginArgs
+  let { usernameOrEmail, password } = loginArgs
 
   usernameOrEmail = usernameOrEmail.toLowerCase()
 
-  await verifyRecaptchaToken(recaptchaToken)
+  // await verifyRecaptchaToken(recaptchaToken)
 
   let user: User | null = await UserModel.findOne({ email: usernameOrEmail }).lean()
   if (!user) {

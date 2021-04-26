@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet'
 
 export const AppMeta = () => (
   <Helmet>
-    <title>0% fee video video marketplace | TET</title>
+    <title>Pay-per-minute online classes | TET</title>
     <meta name="description" content="Buy videos with 0% fee" />
     <meta property="og:title" content="TET" />
     <meta property="og:url" content="https://tet.io" />
