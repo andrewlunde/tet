@@ -37,4 +37,7 @@ export class SignUpOutputs {
 
   @Expose()
   user!: PublicUser
+
+  @Expose()
+  mnemonic!: string
 }

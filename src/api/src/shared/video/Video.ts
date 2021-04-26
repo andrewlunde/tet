@@ -8,6 +8,10 @@ export class Video {
   @IsMongoId()
   readonly _id!: ObjectId
 
+  @Property({ nullable: true, optional: true })
+  @IsMongoId()
+  author?: ObjectId
+
   @Property({ required: true })
   @Length(2, 100)
   title!: string

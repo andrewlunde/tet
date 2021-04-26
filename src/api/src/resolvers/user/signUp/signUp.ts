@@ -3,6 +3,7 @@ import { hash } from 'bcryptjs'
 import { plainToClass } from 'class-transformer'
 import { validateOrReject } from 'class-validator'
 import { Context, Next } from 'koa'
+
 // import * as thetajs from "@thetalabs/theta-js";
 
 import { firstError } from '../../../helpers/firstError'
@@ -16,7 +17,7 @@ import { SignUpInputs, SignUpOutputs } from '../../../shared/user/SignUp'
 import { User, UserModel } from '../../../shared/user/User'
 import { getSignedJwt } from '../helpers/getSignedJwt'
 
-const thetajs: any = require("@thetalabs/theta-js");
+const thetajs: any = require('@thetalabs/theta-js')
 
 export const signUp = async (ctx: Context, next: Next): Promise<void> => {
   const signUpArgs = plainToClass(SignUpInputs, ctx.request.body, { excludeExtraneousValues: true })
@@ -69,14 +70,15 @@ export const signUp = async (ctx: Context, next: Next): Promise<void> => {
 
   // const hashedPassword = await hash(password, 12)
 
-  const provider = new thetajs.providers.HttpProvider(thetajs.networks.ChainIds.Testnet); // TestnetSapphire
+  const provider = new thetajs.providers.HttpProvider(thetajs.networks.ChainIds.Testnet) // TestnetSapphire
 
   console.log(provider)
 
-  const wallet = thetajs.Wallet.createRandom();
+  const wallet = thetajs.Wallet.createRandom()
 
   console.log(wallet)
-  console.log(wallet._mnemonic().phrase)
+
+  const mnemonic = wallet._mnemonic().phrase
 
   // const account = await provider.getAccount(wallet.address);
   // FAILS BECAUSE OF ERROR IN ERROR IN @thetalabs/theta-js : "Fetch is not defined"
@@ -107,7 +109,7 @@ export const signUp = async (ctx: Context, next: Next): Promise<void> => {
 
   // await sendEmailVerifyEmail(user.email, captcha.index)
 
-  const response: SignUpOutputs = { jwt, user: publicUser }
+  const response: SignUpOutputs = { jwt, user: publicUser, mnemonic }
 
   ctx.status = 200
   ctx.body = response

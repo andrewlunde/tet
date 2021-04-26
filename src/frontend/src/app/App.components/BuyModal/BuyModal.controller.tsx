@@ -1,5 +1,5 @@
 import { ObjectId } from 'mongodb'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { State } from 'reducers'
 
@@ -12,6 +12,7 @@ export const BuyModal = () => {
   const { video, showing } = useSelector((state: State) => state.buyModal)
   const [ticker, setTicker] = useState(1)
   const [intervalID, setIntervalID] = useState(-1)
+  const { jwt } = useSelector((state: State) => state.auth)
 
   const startInterval = () => {
     setIntervalID(
@@ -44,5 +45,14 @@ export const BuyModal = () => {
     dispatch(hideVideo())
   }
 
-  return <BuyModalView loading={loading} showing={showing} video={video} hideCallback={hideCallback} ticker={ticker} />
+  return (
+    <BuyModalView
+      loading={loading}
+      showing={showing}
+      video={video}
+      hideCallback={hideCallback}
+      ticker={ticker}
+      jwt={jwt}
+    />
+  )
 }

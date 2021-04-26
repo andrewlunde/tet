@@ -10,7 +10,7 @@ import { UserView } from './User.view'
 export const User = () => {
   const dispatch = useDispatch()
   const loading = useSelector((state: State) => state.loading)
-  let { username } = useParams()
+  let { username } = useParams<{ username: string }>()
   const user = useSelector((state: State) => state.users[username])
 
   useEffect(() => {

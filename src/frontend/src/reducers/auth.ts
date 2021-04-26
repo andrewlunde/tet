@@ -10,12 +10,14 @@ export interface AuthState {
   jwt?: Jwt
   user?: PublicUser
   resetPasswordToken?:string
+  mnemonic?:string
 }
 
 const authDefaultState: AuthState = {
   jwt: undefined,
   user: undefined,
-  resetPasswordToken: undefined
+  resetPasswordToken: undefined,
+  mnemonic: undefined
 }
 
 export function auth(state = authDefaultState, action: any): AuthState {
@@ -34,6 +36,7 @@ export function auth(state = authDefaultState, action: any): AuthState {
         ...state,
         jwt: action.payload.jwt,
         user: action.payload.user,
+        mnemonic: action.payload.mnemonic,
       }
     }
     case SIGN_UP_ROLLBACK: {

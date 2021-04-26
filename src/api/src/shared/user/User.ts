@@ -22,7 +22,7 @@ export class User {
   @Length(10, 100)
   mnemonic!: string
 
-  @Property({ required: true, unique: true })
+  @Property({ required: true })
   balance!: number
 
   @Property({ nullable: true, optional: true })
