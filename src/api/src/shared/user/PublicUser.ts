@@ -1,4 +1,4 @@
-import { IsDate, IsEmail, IsMongoId, Length, Matches, IsOptional, IsUrl, IsInt } from 'class-validator'
+import { IsDate, IsEmail, IsInt, IsMongoId, IsOptional, IsUrl, Length, Matches } from 'class-validator'
 import { ObjectId } from 'mongodb'
 
 export class PublicUser {
@@ -9,6 +9,9 @@ export class PublicUser {
   @Matches(/^[a-zA-Z0-9_]*$/, { message: 'Username can only contain letters, numbers and underscores' })
   username!: string
 
+  @IsOptional()
+  balance!: number
+  
   @IsOptional()
   @IsEmail()
   emailVerified?: boolean

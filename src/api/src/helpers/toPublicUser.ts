@@ -8,5 +8,6 @@ export const toPublicUser = (user: User): PublicUser => {
     profilePicture: user.profilePicture,
     emailVerified: user.emailVerified,
     createdAt: user.createdAt,
+    balance: user.balance
   }
 }
