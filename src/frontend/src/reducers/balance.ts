@@ -1,6 +1,7 @@
 import { RESET, RESTORE } from 'app/App.actions'
 import { CHARGE_COMMIT } from 'app/App.components/BuyModal/BuyModal.actions'
 import { GET_BALANCE_COMMIT } from 'app/App.components/Header/Header.actions'
+import { LOGIN_COMMIT } from 'pages/Login/Login.actions'
 import { SIGN_UP_COMMIT } from 'pages/SignUp/SignUp.actions'
 
 export type BalanceState = number | null
@@ -20,6 +21,10 @@ export function balance(state = balanceDefaultState, action: any): BalanceState 
     }
     case SIGN_UP_COMMIT: {
       return 100
+    }
+    case LOGIN_COMMIT: {
+      if(action.payload.user?.balance) return action.payload.user.balance
+      return state
     }
     case CHARGE_COMMIT: {
       if(state && state > 0) return state - 1
