@@ -15,7 +15,7 @@ export const signUp = ({ email, password, confirmPassword, username, recaptchaTo
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/user/sign-up`,
+          url: `https://api.tet.university/user/sign-up`,
           method: 'POST',
           json: { email, password, confirmPassword, username, recaptchaToken },
         },

@@ -12,7 +12,7 @@ export const getVideos = () => (dispatch: any, getState: any) => {
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/video/get-videos`,
+          url: `https://api.tet.university/video/get-videos`,
           method: 'POST',
           headers: { Authorization: `Bearer ${state.auth.jwt}` },
           json: {},

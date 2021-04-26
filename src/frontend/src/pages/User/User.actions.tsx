@@ -13,7 +13,7 @@ export const getUser = ({ username }: GetPublicUserInputs) => (dispatch: any, ge
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/page/get-user`,
+          url: `https://api.tet.university/page/get-user`,
           method: 'POST',
           headers: { Authorization: `Bearer ${state.auth.jwt}` },
           json: { username },

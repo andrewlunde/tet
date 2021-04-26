@@ -16,7 +16,7 @@ export const changePassword = ({ password, newPassword }: ChangePasswordInputs) 
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/user/change-password`,
+          url: `https://api.tet.university/user/change-password`,
           method: 'POST',
           json: { password, newPassword },
           headers: { Authorization: `Bearer ${state.auth.jwt}` },

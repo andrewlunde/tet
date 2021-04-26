@@ -16,7 +16,7 @@ export const editProfilePicture = ({ profilePicture }: EditProfilePictureInputs)
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/user/edit-profile-picture`,
+          url: `https://api.tet.university/user/edit-profile-picture`,
           method: 'POST',
           headers: { Authorization: `Bearer ${state.auth.jwt}` },
           json: { profilePicture },

@@ -13,7 +13,7 @@ export const sendVote = ({ commentId, voteDirection }: SendVoteInputs) => (dispa
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/vote/send-vote`,
+          url: `https://api.tet.university/vote/send-vote`,
           method: 'POST',
           headers: { Authorization: `Bearer ${state.auth.jwt}` },
           json: { commentId, voteDirection },

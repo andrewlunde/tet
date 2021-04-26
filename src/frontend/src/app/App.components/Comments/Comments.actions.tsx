@@ -13,7 +13,7 @@ export const getComments = ({ targetId, page }: GetCommentsInputs) => (dispatch:
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/comment/get-comments`,
+          url: `https://api.tet.university/comment/get-comments`,
           method: 'POST',
           headers: { Authorization: `Bearer ${state.auth.jwt}` },
           json: { targetId, page },

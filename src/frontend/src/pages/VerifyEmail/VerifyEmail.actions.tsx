@@ -15,7 +15,7 @@ export const verifyEmail = ({ solution }: VerifyEmailInputs) => (dispatch: any, 
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/user/verify-email`,
+          url: `https://api.tet.university/user/verify-email`,
           method: 'POST',
           json: { solution },
           headers: { Authorization: `Bearer ${state.auth.jwt}` },

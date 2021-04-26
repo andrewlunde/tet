@@ -16,7 +16,7 @@ export const getBlank = ({ username }: GetPublicUserInputs) => (dispatch: any, g
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/user/get-public-user`,
+          url: `https://api.tet.university/user/get-public-user`,
           method: 'GET',
           headers: { Authorization: `Bearer ${state.auth.jwt}` },
           json: { username },

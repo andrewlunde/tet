@@ -20,7 +20,7 @@ export const newComment = (
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/comment/new-comment`,
+          url: `https://api.tet.university/comment/new-comment`,
           method: 'POST',
           headers: { Authorization: `Bearer ${state.auth.jwt}` },
           json: { title, subjectCategory, content, commentType, targetType, targetId, contentImage },

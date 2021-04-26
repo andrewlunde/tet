@@ -22,7 +22,7 @@ export const login = ({ usernameOrEmail, password, recaptchaToken }: LoginInputs
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/user/login`,
+          url: `https://api.tet.university/user/login`,
           method: 'POST',
           json: { usernameOrEmail, password, recaptchaToken },
         },

@@ -14,7 +14,7 @@ export const forgotPassword = ({ usernameOrEmail, recaptchaToken }: ForgotPasswo
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/user/forgot-password`,
+          url: `https://api.tet.university/user/forgot-password`,
           method: 'POST',
           json: { usernameOrEmail, recaptchaToken },
         },

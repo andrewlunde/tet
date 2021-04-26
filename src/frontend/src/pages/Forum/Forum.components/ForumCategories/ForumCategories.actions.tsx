@@ -12,7 +12,7 @@ export const getStats = () => (dispatch: any, getState: any) => {
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/stat/get-stats`,
+          url: `https://api.tet.university/stat/get-stats`,
           method: 'GET',
           headers: { Authorization: `Bearer ${state.auth.jwt}` },
         },

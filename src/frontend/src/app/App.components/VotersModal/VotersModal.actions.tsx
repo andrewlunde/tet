@@ -31,7 +31,7 @@ export const getUpvoters = ({ commentId, pageUpvoters }: GetUpvotersInputs) => (
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/vote/get-upvoters`,
+          url: `https://api.tet.university/vote/get-upvoters`,
           method: 'POST',
           headers: { Authorization: `Bearer ${state.auth.jwt}` },
           json: { commentId, pageUpvoters },
@@ -55,7 +55,7 @@ export const getDownvoters = ({ commentId, pageDownvoters }: GetDownvotersInputs
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/vote/get-downvoters`,
+          url: `https://api.tet.university/vote/get-downvoters`,
           method: 'POST',
           headers: { Authorization: `Bearer ${state.auth.jwt}` },
           json: { commentId, pageDownvoters },

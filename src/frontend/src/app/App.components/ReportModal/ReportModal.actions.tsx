@@ -31,7 +31,7 @@ export const sendReport = ({ targetId, targetType, reason }: SendReportInputs) =
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/report/send-report`,
+          url: `https://api.tet.university/report/send-report`,
           method: 'POST',
           headers: { Authorization: `Bearer ${state.auth.jwt}` },
           json: { targetId, targetType, reason },

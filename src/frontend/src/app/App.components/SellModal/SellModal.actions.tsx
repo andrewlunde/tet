@@ -34,7 +34,7 @@ export const newKey = ({ videoId, price, key }: NewKeyInputs) => (dispatch: any,
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/key/new-key`,
+          url: `https://api.tet.university/key/new-key`,
           method: 'POST',
           headers: { Authorization: `Bearer ${state.auth.jwt}` },
           json: { videoId, price, key },

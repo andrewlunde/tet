@@ -14,7 +14,7 @@ export const resendVerifyEmail = () => (dispatch: any, getState: any) => {
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/user/resend-email-verification`,
+          url: `https://api.tet.university/user/resend-email-verification`,
           method: 'POST',
           headers: { Authorization: `Bearer ${state.auth.jwt}` },
         },

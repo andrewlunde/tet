@@ -41,7 +41,7 @@ export const getUploadToken = () => (dispatch: any, getState: any) => {
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/upload/get-token`,
+          url: `https://api.tet.university/upload/get-token`,
           method: 'GET',
           headers: { Authorization: `Bearer ${state.auth.jwt}` },
         },

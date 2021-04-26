@@ -12,7 +12,7 @@ export const getBalance = () => (dispatch: any, getState: any) => {
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/user/get-balance`,
+          url: `https://api.tet.university/user/get-balance`,
           method: 'POST',
           headers: { Authorization: `Bearer ${state.auth.jwt}` },
           json: {},

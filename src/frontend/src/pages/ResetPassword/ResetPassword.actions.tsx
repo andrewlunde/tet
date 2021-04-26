@@ -14,7 +14,7 @@ export const resetPassword = ({ solution, token, newPassword }: ResetPasswordInp
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/user/reset-password`,
+          url: `https://api.tet.university/user/reset-password`,
           method: 'POST',
           json: { solution, token, newPassword },
         },

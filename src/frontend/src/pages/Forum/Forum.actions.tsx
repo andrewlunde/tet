@@ -14,7 +14,7 @@ export const getPosts = ({ subjectCategory, search, page }: GetCommentsInputs) =
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/comment/get-comments`,
+          url: `https://api.tet.university/comment/get-comments`,
           method: 'POST',
           headers: { Authorization: `Bearer ${state.auth.jwt}` },
           json: { commentType: TargetType.POST, search, page, subjectCategory },

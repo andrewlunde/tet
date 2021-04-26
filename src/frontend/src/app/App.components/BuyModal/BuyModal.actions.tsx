@@ -3,6 +3,7 @@ import { State } from 'reducers'
 import { BuyKeyInputs } from 'shared/key/BuyKey'
 import { ChargeInputs } from 'shared/video/Charge'
 import { Video } from 'shared/video/Video'
+
 import { getBalance } from '../Header/Header.actions'
 
 export const SHOW_VIDEO = 'SHOW_VIDEO'
@@ -33,7 +34,7 @@ export const charge = ({ videoId }: ChargeInputs) => (dispatch: any, getState: a
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/video/charge`,
+          url: `https://api.tet.university/video/charge`,
           method: 'POST',
           headers: { Authorization: `Bearer ${state.auth.jwt}` },
           json: { videoId },
@@ -57,7 +58,7 @@ export const buyKey = ({ keyId }: BuyKeyInputs) => (dispatch: any, getState: any
     meta: {
       offline: {
         effect: {
-          url: `${process.env.REACT_APP_BACKEND_URL}/key/buy-key`,
+          url: `https://api.tet.university/key/buy-key`,
           method: 'POST',
           headers: { Authorization: `Bearer ${state.auth.jwt}` },
           json: { keyId },
